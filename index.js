@@ -106,6 +106,17 @@ function combinations(s) {
     return result;
 }
 
+
+function timesAppeared(string, char) {
+	var result = 0;
+	for (let i = 0; i < string.length; i++) {
+		if (string.charAt(i) === char.toString()) {
+			result++;
+		}
+	}
+	return result;
+}
+
 const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join('')};
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, random };
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, random, timesAppeared };
