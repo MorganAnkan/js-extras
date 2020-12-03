@@ -106,7 +106,6 @@ function combinations(s) {
     return result;
 }
 
-
 function timesAppeared(string, char) {
 	var result = 0;
 	for (let i = 0; i < string.length; i++) {
@@ -119,4 +118,4 @@ function timesAppeared(string, char) {
 
 const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join('')};
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, random, timesAppeared };
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, random };
