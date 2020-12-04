@@ -90,7 +90,7 @@ function resize(width, height, maxWidth, maxHeight) {
 }
 
 function swapKeysWithValues(obj) {
-    return Object.assign({}, ...Object.entries(obj).map(([a,b]) => ({ [b]: a })));
+    return Object.assign({}, ...Object.entries(obj).map(([a, b]) => ({ [b]: a })));
 }
 
 function combinations(s) {
@@ -107,13 +107,13 @@ function combinations(s) {
 }
 
 function timesAppeared(string, char) {
-	var result = 0;
-	for (let i = 0; i < string.length; i++) {
-		if (string.charAt(i) === char.toString()) {
-			result++;
-		}
-	}
-	return result;
+    var result = 0;
+    for (let i = 0; i < string.length; i++) {
+        if (string.charAt(i) === char.toString()) {
+            result++;
+        }
+    }
+    return result;
 }
 
 function scroll(text, length, delay, callback) {
@@ -125,6 +125,51 @@ function scroll(text, length, delay, callback) {
     }, delay);
 }
 
+function getDate() {
+    var log_h = (new Date).getHours().toString();
+    if (log_h.length == 1) {
+        var log_h = "0" + log_h;
+    }
+    var log_m = (new Date).getMinutes().toString();
+    if (log_m.length == 1) {
+        var log_m = "0" + log_m;
+    }
+    var log_s = (new Date).getSeconds().toString();
+    if (log_s.length == 1) {
+        var log_s = "0" + log_s;
+    }
+    var log_ms = (new Date).getMilliseconds().toString();
+    if (log_ms.length == 1) {
+        var log_ms = "00" + log_ms;
+    }
+    if (log_ms.length == 2) {
+        var log_ms = "0" + log_ms;
+    }
+    return `${log_h}:${log_m}:${log_s}.${log_ms}`;
+}
+
+function replaceAll(str, target, replacement) {
+    return str.split(target).join(replacement);
+}
+
+function formatBytes(bytes, decimals, json = false) {
+    if (bytes == 0 && !json) return "0 Bytes";
+    if (bytes == 0 && json) return JSON.stringify({ "amount": 0, "type": "Bytes" });
+    var k = 1024,
+        dm = decimals <= 0 ? 0 : decimals || 2,
+        sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+    var much = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
+    if (json == true) {
+        return JSON.stringify({ "amount": much, "type": sizes[i] });
+    }
+    return `${much}${sizes[i]}`;
+}
+
+function randomFixedInteger(length) {
+	return Math.floor(Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1));
+}
+
 const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join("")};
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, random };
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, getDate, replaceAll, formatBytes, randomFixedInteger, random };
