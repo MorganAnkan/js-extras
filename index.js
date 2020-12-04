@@ -1,4 +1,4 @@
-//js-extras | 2020-12-03
+//js-extras | 2020-12-04
 
 const Temperature = {
     celciusToKelvin: (temperature) => {
@@ -116,6 +116,15 @@ function timesAppeared(string, char) {
 	return result;
 }
 
-const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join('')};
+function scroll(text, length, delay, callback) {
+    var i = 0;
+    setInterval(() => {
+        callback(text.slice(i, i + length));
+        i++;
+        if (i + length > text.length) clearInterval(this);
+    }, delay);
+}
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, random };
+const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join("")};
+
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, random };
