@@ -1,22 +1,22 @@
-//js-extras | 2020-12-04
+//js-extras | 2020-12-05
 
 const Temperature = {
-    celciusToKelvin: (temperature) => {
+    celciusToKelvin: temperature => {
         return temperature + 273.15
     },
-    kelvinToCelcius: (temperature) => {
+    kelvinToCelcius: temperature => {
         return temperature - 273.15
     },
-    celciusToFahrenheit: (temperature) => {
+    celciusToFahrenheit: temperature => {
         return (temperature * 9) / 5 + 32
     },
-    fahrenheitToCelcius: (temperature) => {
+    fahrenheitToCelcius: temperature => {
         return (temperature - 32) / 1.8
     },
-    kelvinToFahrenheit: (temperature) => {
+    kelvinToFahrenheit: temperature => {
         return temperature * 1.8 - 459.67
     },
-    fahrenheitToKelvin: (temperature) => {
+    fahrenheitToKelvin: temperature => {
         return (temperature + 459.67) / 1.8
     },
     DEGREE_CHAR: "\u00b0",
@@ -29,7 +29,7 @@ const Temperature = {
 }
 
 function randomCase(str) {
-    return str.split("").map((v) => Math.round(Math.random()) ? v.toUpperCase() : v.toLowerCase()).join("");
+    return str.split("").map(v => Math.round(Math.random()) ? v.toUpperCase() : v.toLowerCase()).join("");
 }
 
 function grammar(str) {
@@ -46,7 +46,7 @@ function rainbowText(text, colors = ["\u001b[31m", "\u001b[31;1m", "\u001b[33m",
     let index = -1;
 
     text.split(" ").forEach(line => {
-        line.split("").forEach((letter) => {
+        line.split("").forEach(letter => {
             if (index + 1 >= colors.length) index -= colors.length;
             index++;
             result += colors[index] + letter;
@@ -170,6 +170,19 @@ function randomFixedInteger(length) {
 	return Math.floor(Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1));
 }
 
+const Base64 = {
+    encode: (data) => {
+        if(Buffer != undefined) return Buffer.from(data).toString("base64");
+        if(btoa != undefined && typeof atob == "function") return btoa(data);
+        throw new Error("Base64 encoding not supported.");
+    },
+    decode: (data) => {
+        if(Buffer != undefined && typeof Buffer == "function") return Buffer.from(data, "base64").toString("ascii");
+        if(atob != undefined && typeof atob == "function") return atob(data);
+        throw new Error("Base64 decoding not supported.");
+    }
+};
+
 const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join("")};
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, getDate, replaceAll, formatBytes, randomFixedInteger, random };
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, getDate, replaceAll, formatBytes, randomFixedInteger, Base64, random };
