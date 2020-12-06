@@ -41,19 +41,18 @@ function grammar(str) {
     }
 }
 
-function rainbowText(text, colors = ["\u001b[31m", "\u001b[31;1m", "\u001b[33m", "\u001b[32m", "\u001b[36m", "\u001b[34m", "\u001b[35m"], reset = "\u001b[0m") {
-    let result = "";
+function rainbowfyText(text, colors = ["\u001b[31m", "\u001b[31;1m", "\u001b[33m", "\u001b[32m", "\u001b[36m", "\u001b[34m", "\u001b[35m"], reset = "\u001b[0m") {
+    let result = [];
     let index = -1;
-
-    text.split(" ").forEach(line => {
-        line.split("").forEach(letter => {
+    text.split(" ").forEach((line,ind) => {
+        result[ind] = "";
+        line.split("").forEach((letter, i) => {
             if (index + 1 >= colors.length) index -= colors.length;
             index++;
-            result += colors[index] + letter;
+            result[ind] += colors[index] + letter;
         });
-        result += " ";
     });
-    return reset != undefined ? (result += reset) : result;
+    return reset != undefined ? (tresult.join(" ") += reset) : tresult.join(" ");
 }
 
 function formatJson(json) {
