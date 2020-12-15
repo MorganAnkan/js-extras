@@ -1,4 +1,4 @@
-//js-extras | 2020-12-12
+//js-extras | 2020-12-15
 
 const Temperature = {
     celciusToKelvin: temperature => {
@@ -106,13 +106,7 @@ function combinations(s) {
 }
 
 function timesAppeared(string, char) {
-    var result = 0;
-    for (let i = 0; i < string.length; i++) {
-        if (string.charAt(i) === char.toString()) {
-            result++;
-        }
-    }
-    return result;
+   return string.split(char).length - 1;
 }
 
 function scroll(text, length, delay, callback) {
