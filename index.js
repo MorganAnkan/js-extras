@@ -117,6 +117,18 @@ function timesAppeared(string, char) {
 	return result;
 }
 
+function lines(amount=5, client, clientType=minecraft-protocol) {
+	if(clientType == "mineflayer") {
+		for(i = 0; i < amount; i++) {
+			client.chat('██████████');
+		};
+	} else if(clientType == "minecraft-protocol") {
+		for(i = 0; i < amount; i++) {
+			client.write('chat', { message: '██████████' });
+		};
+	};
+}
+
 const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join('')};
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, random, timesAppeared };
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, random, timesAppeared, lines };
