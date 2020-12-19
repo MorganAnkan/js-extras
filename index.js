@@ -1,4 +1,4 @@
-//js-extras | 2020-12-15
+//js-extras | 2020-12-19
 
 const Temperature = {
     celciusToKelvin: temperature => {
