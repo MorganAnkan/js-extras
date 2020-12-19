@@ -166,7 +166,7 @@ function randomFixedInteger(length) {
 const Base64 = {
     encode: (data) => {
         if(Buffer != undefined) return Buffer.from(data).toString("base64");
-        if(btoa != undefined && typeof atob == "function") return btoa(data);
+        if(btoa != undefined && typeof btoa == "function") return btoa(data);
         throw new Error("Base64 encoding not supported.");
     },
     decode: (data) => {
