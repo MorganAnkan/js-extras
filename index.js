@@ -52,7 +52,7 @@ function rainbowText(text, colors = ["\u001b[31m", "\u001b[31;1m", "\u001b[33m",
             result[ind] += colors[index] + letter;
         });
     });
-    return reset != undefined ? (tresult.join(" ") += reset) : tresult.join(" ");
+    return reset != undefined ? (result.join(" ") += reset) : result.join(" ");
 }
 
 function formatJson(json) {
