@@ -1,4 +1,4 @@
-//js-extras | 2020-12-19
+//js-extras | 2021-01-22
 
 const Temperature = {
     celciusToKelvin: temperature => {
@@ -178,4 +178,33 @@ const Base64 = {
 
 const random=(l)=>{return[...Array(l)].map(i=>Math.random()>0.5?(~~(Math.random()*36)).toString(36).toUpperCase():(~~(Math.random()*36)).toString(36)).join("")};
 
-module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, getDate, replaceAll, formatBytes, randomFixedInteger, Base64, random };
+class EventSource extends require("events") {
+    /**
+    * @author Games
+    **/
+    constructor(url) {
+        super();
+        this.url = url;
+        this.req = (url.startsWith("https") ? require("https") : require("http")).get(this.url, res => {
+            let data = "";
+            res.on("data", buffer => {
+                data += buffer;
+                if (data.endsWith("\n\n")) {
+                    let firstLineBreak = data.indexOf("\n");
+                    let event = data.substr(0, firstLineBreak + 1);
+                    event = event.slice(7, event.length - 1);
+                    let dataField = data.slice(firstLineBreak + 7);
+                    dataField = dataField.slice(0, dataField.length - 2);
+                    this.emit(event, dataField);
+                    data = "";
+                }
+            });
+        });
+    }
+
+    end() {
+        this.req.end();
+    }
+}
+
+module.exports = { Temperature, randomCase, grammar, rainbowText, formatJson, mergeObjects, shuffleArray, escapeCharacters, resize, swapKeysWithValues, combinations, timesAppeared, scroll, getDate, replaceAll, formatBytes, randomFixedInteger, Base64, random, EventSource };

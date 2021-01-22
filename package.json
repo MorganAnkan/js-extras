@@ -1,0 +1,25 @@
+{
+  "name": "js-extras",
+  "version": "2020.12.19-3",
+  "description": "Some utility functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MorganAnkan/js-extras.git"
+  },
+  "keywords": [
+    "js-extras",
+    "extras",
+    "util",
+    "extra"
+  ],
+  "author": "MorganAnkan, Apmunute",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MorganAnkan/js-extras/issues"
+  },
+  "homepage": "https://github.com/MorganAnkan/js-extras#readme"
+}
