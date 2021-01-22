@@ -1,6 +1,6 @@
 {
   "name": "js-extras",
-  "version": "2020.12.19-3",
+  "version": "2021.01.22",
   "description": "Some utility functions",
   "main": "index.js",
   "scripts": {
